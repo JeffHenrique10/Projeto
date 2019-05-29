@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const nunjucks= require('nunjucks')
+const nunjucks = require('nunjucks')
 
 class App {
   constructor () {
@@ -12,7 +12,7 @@ class App {
   }
 
   database () {
-    mongoose.connect('mongodb://localhost:27017/NodeJs', {
+    mongoose.connect('mongodb://localhost:27017/trabalho', {
       useNewUrlParser: true,
       useCreateIndex: true
     })
@@ -20,11 +20,12 @@ class App {
 
   middleware () {
     this.express(express.json())
-    this.nunjucks= nunjucks.configure('./src/views', {
-        autoscape: true,
-        express: this.express,
-        watch: true
+    this.nunjucks = nunjucks.configure('./src/views', {
+      autoscape: true,
+      express: this.express,
+      watch: true
     })
+    this.express.use(express.urlencoded({ extended: false }))
     this.express.set('view engine', 'njk')
   }
 

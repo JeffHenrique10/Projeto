@@ -1,14 +1,18 @@
-const express = require("express");
-const Task = require("./models/Task");
-const routes = express.Router();
+const express = require('express')
+const TaskController = require('./controllers/taskController')
 
-routes.post("/", (req, res) => {
-  Task.create({
-    nome: "Abilio",
-    email: "abiliocoelho@gmail.com",
-    password: "123456"
-  });
-  return res.send("Usuário Criado!");
-});
+const routes = express.Router()
 
-module.exports = routes;
+routes.post('/task', TaskController.store)
+routes.get('/task', TaskController.list)
+routes.delete('/task/:id', TaskController.delete)
+routes.put('/task/:id', TaskController.update)
+
+routes.get('/', (req, res) => {
+  res.render('index')
+})
+routes.get('/form', (req, res) => {
+  res.render('form')
+})
+
+module.exports = routes
