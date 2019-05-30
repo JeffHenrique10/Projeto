@@ -14,12 +14,13 @@ class App {
   database () {
     mongoose.connect('mongodb://localhost:27017/trabalho', {
       useNewUrlParser: true,
-      useCreateIndex: true
+      useCreateIndex: true,
+      useFindAndModify: false
     })
   }
 
   middleware () {
-    this.express(express.json())
+    this.express.use(express.json())
     this.nunjucks = nunjucks.configure('./src/views', {
       autoscape: true,
       express: this.express,
