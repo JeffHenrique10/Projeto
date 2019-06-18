@@ -9,10 +9,6 @@ routes.delete('/task/:id', TaskController.delete)
 routes.put('/task/:id', TaskController.update)
 
 routes.get('/', (req, res) => {
-  res.send('Bem - vindo')
-})
-
-routes.get('/form', (req, res) => {
   res.render('form')
 })
 

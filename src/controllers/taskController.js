@@ -19,10 +19,6 @@ class TaskController {
     const task = await Task.find()
     return res.json(task)
   }
-  async show (req, res) {
-    const task = await Task.findById(req.params.id)
-    return res.json(task)
-  }
 }
 
 module.exports = new TaskController()

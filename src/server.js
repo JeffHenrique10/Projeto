@@ -12,10 +12,9 @@ class App {
   }
 
   database () {
-    mongoose.connect('mongodb://localhost:27017/trabalho', {
+    mongoose.connect('mongodb://localhost:27017/projeto', {
       useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false
+      useCreateIndex: true
     })
   }
 
